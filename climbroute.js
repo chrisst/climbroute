@@ -11,7 +11,7 @@ if (Meteor.isServer) {
     var routes = {};
     routes = JSON.parse(Assets.getText('routes.json'));
     
-    // inset routes in collection
+    // insert routes in collection
     routes.forEach(function(route) {
       Routes.insert(route);
     });
