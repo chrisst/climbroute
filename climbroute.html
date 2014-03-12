@@ -8,7 +8,7 @@
     </div>
   {{> hello}}
 
-  {{currentUser}}
+  {{> stuff}}
 </body>
 
 <template name="hello">
@@ -17,6 +17,19 @@
   {{greeting}}
 </template>
 
-<template name="heyo">
+<template name="stuff">
+    <ul>
+        stuff template
+        {{#each routes}}
+           {{> route_info}}
+        {{else}}
+            nothing here
+        {{/each}}
+    </ul>
+</template>
 
+<template name="route_info">
+    <li>
+    {{name}}
+    </li>
 </template>
