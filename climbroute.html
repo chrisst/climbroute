@@ -1,5 +1,9 @@
 <head>
   <title>climbroute</title>
+  <style>
+  table th { background: #eaeaea; text-align: left; }
+  table td, table th { padding: 5px; border: 1px solid #333; border-collapse: collapse; }
+  </style>
 </head>
 
 <body>
@@ -7,9 +11,19 @@
     {{loginButtons align="right"}}
     </div>
   {{> hello}}
-
+  
+  <hr>
+  Stuff:
   {{> stuff}}
+  
+  <hr>
+  Routes:
+  {{> Routes}}
 </body>
+
+
+
+
 
 <template name="hello">
   <h1>Our Sweet Climbing Route App!</h1>
@@ -19,7 +33,6 @@
 
 <template name="stuff">
     <ul>
-        stuff template
         {{#each routes}}
            {{> route_info}}
         {{else}}
@@ -29,7 +42,23 @@
 </template>
 
 <template name="route_info">
-    <li>
-    {{name}}
-    </li>
+    <li>{{name}}</li>
+</template>
+
+
+<template name="Routes">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Rating</th>
+      <th>Setter</th>
+    </tr>
+    {{#each Route}}
+    <tr>
+      <td>{{name}}</td>
+      <td>{{rating}}</td>
+      <td>{{setter}}</td>
+    </tr>
+    {{/each}}
+  </table>
 </template>
