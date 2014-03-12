@@ -10,6 +10,10 @@ if (Meteor.isClient) {
         console.log("You pressed the button");
     }
   });
+
+  Accounts.ui.config({
+    passwordSignupFields: 'USERNAME_ONLY'
+  });
 }
 
 if (Meteor.isServer) {

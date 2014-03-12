@@ -3,14 +3,20 @@
 </head>
 
 <body>
-  {{loginButtons}}
+    <div style="float: right">
+    {{loginButtons align="right"}}
+    </div>
   {{> hello}}
-  foo stuff
+
+  {{currentUser}}
 </body>
 
 <template name="hello">
-  <h1>Hello World!</h1>
+  <h1>Our Sweet Climbing Route App!</h1>
+  <h3>Stuff will happen here.</h3>
   {{greeting}}
-  <input type="button" value="Click" />
-  <h3>Here's balls change.</h3>
+</template>
+
+<template name="heyo">
+
 </template>
