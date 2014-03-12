@@ -1,9 +1,5 @@
 <head>
   <title>climbroute</title>
-  <style>
-  table th { background: #eaeaea; text-align: left; }
-  table td, table th { padding: 5px; border: 1px solid #333; border-collapse: collapse; }
-  </style>
 </head>
 
 <body>
@@ -12,14 +8,15 @@
     </div>
   {{> hello}}
   
+  
+  <hr>
+  <h2>Routes:</h2>
+  {{> Routes}}
+  
   <hr>
   Stuff:
   {{> stuff}}
-  
-  <hr>
-  Routes:
-  {{> Routes}}
-</body>
+</body>cod
 
 
 
@@ -58,7 +55,14 @@
       <td>{{name}}</td>
       <td>{{rating}}</td>
       <td>{{setter}}</td>
+      <td><a href="" class="remove">remove</a></td>
     </tr>
     {{/each}}
+    <tr>
+      <td><input type="text" placeholder="Name" class="name" /></td>
+      <td><input type="text" placeholder="Rating" class="rating" /></td>
+      <td><input type="text" placeholder="Setter" class="setter" /></td>
+      <td><a href="" class="add">add</a></td>
+    </tr>
   </table>
 </template>
