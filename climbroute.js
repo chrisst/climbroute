@@ -27,9 +27,16 @@ if (Meteor.isClient) {
         console.log("You pressed the button");
     }
   });
+<<<<<<< HEAD
   
   
   Meteor.subscribe('routes');
   console.log(Routes.find().fetch()); // synchronous!
+=======
+
+  Accounts.ui.config({
+    passwordSignupFields: 'USERNAME_ONLY'
+  });
+>>>>>>> 97a9a69b2aa1d2fc1cf068f010cbc8d4da18b6b8
 }
 
