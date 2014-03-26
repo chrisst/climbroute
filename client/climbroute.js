@@ -3,28 +3,52 @@ Routes = new Meteor.Collection('routes');
 
 if (Meteor.isClient) {
   
+  // PAGE ROUTER
   Meteor.Router.add({
     '/': 'home',
     '/about': 'about',
     '/users': 'users',
     '/contact': 'contact',
-    '/gyms': 'gyms'
+    '/gyms': 'gyms',
+    '/gym/:id': function(id) {
+      Session.set('gymId',id);
+      return 'gym';
+    },
+    '/route/:id': function(id) {
+      Session.set('routeId',id);
+      return 'route';
+    },
+    '/user/:id': function(id) {
+      Session.set('userId',id);
+      return 'user';
+    }
   });
-
   
+  
+  // GREETING EXAMPLE
   Template.hello.greeting = function() {
-    return "Welcome to climbroute.";
+    return "Welcome to ClimbRoute!";
   };
   
-  Template.Routes.Route = function() {
-    return Routes.find({});
+  
+   // ACCOUNTS
+  Accounts.ui.config({
+    passwordSignupFields: 'USERNAME_ONLY'
+  });
+  
+  
+  
+  // ROUTES
+  Template.route.thisRoute = function() {
+    return Routes.findOne({'_id': Session.get('routeId').replace(/"/g,'')});
   }
   
-  Template.Gyms.Gym = function() {
-    return Gyms.find({});
+  Template.route.lastGym = function() {
+    return Gyms.findOne({'_id': Session.get('gymId').replace(/"/g,'')});
   }
   
-  Template.Routes.events = {
+  /*
+  Template.route.events = {
     'click .add': function(e) {
       e.preventDefault();
 
@@ -43,16 +67,26 @@ if (Meteor.isClient) {
       Routes.remove(route_id);
     }
   }
+  */
+  
+  
+  
+  // GYMS
+  Template.gyms.allGyms = function() {
+    return Gyms.find({});
+  }
+  
+  Template.gym.thisGym = function() {
+    return Gyms.findOne({'_id': Session.get('gymId').replace(/"/g,'')});
+  }
+  
+  Template.gym.thisRoute = function(id) {
+    return Routes.findOne({'_id':id});
+  }
+  
+  Template.gym.greeting = function() {
+    return 'gym greeting';
+  }
 
-  Accounts.ui.config({
-    passwordSignupFields: 'USERNAME_ONLY'
-  });
-  
-  Template.pager.current = function() {
-    return Meteor.Router.page();  
-  };
-  
-  
-  
 }
 
