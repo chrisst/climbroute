@@ -38,16 +38,14 @@ if (Meteor.isClient) {
   
   Meteor.Router.add({
     '/': 'home',
-    '/about-us': 'about'
+    '/about': 'about',
+    '/users': 'users',
+    '/contact': 'contact'
   });
 
   
   Template.hello.greeting = function() {
     return "Welcome to climbroute.";
-  };
-
-  Template.stuff.routes = function() {
-    return Routes.find({});
   };
   
   Template.Routes.Route = function() {
