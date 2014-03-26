@@ -1,0 +1,71 @@
+<template name="home">
+  <div class="container hero">
+    <div class="row">
+      <div class="span12 text-center ">{{> hello}}</div>
+    </div>
+  
+  <div class="container">
+      <div class="row">
+          <h2>Gyms:</h2>
+          {{> Gyms}}
+      </div>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <h2>Routes:</h2>
+      {{> Routes}}
+    </div>
+  </div> 
+  
+  <br/><br/>
+  </div>
+</template>
+
+
+
+
+
+<template name="Gyms">
+    <ul>
+        {{#each Gym}}
+        <li>{{name}}</li>
+        {{/each}}
+    </ul>
+</template>
+
+
+<template name="hello">
+  <h1>Welcome to ClimbRoute!</h1>
+</template>
+
+
+<template name="Routes">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Rating</th>
+      <th>Setter</th>
+      <th></th>
+    </tr>
+    {{#each Route}}
+    <tr>
+      <td data-toggle="collapse" target>{{name}}</td>
+      <td>{{rating}}</td>
+      <td>{{setter}}</td>
+      <td><a href="" class="remove">remove</a></td>
+    </tr>
+    {{/each}}
+    <tr>
+      <td><input type="text" placeholder="Name" class="name" /></td>
+      <td><input type="text" placeholder="Rating" class="rating" /></td>
+      <td><input type="text" placeholder="Setter" class="setter" /></td>
+      <td><a href="" class="add">add</a></td>
+    </tr>
+  </table>
+</template>
+
+
+<template name="pager">
+    {{> greeting}}
+</template>
