@@ -1,3 +1,6 @@
+Gyms = new Meteor.Collection('gyms');
+Routes = new Meteor.Collection('routes');
+
 if (Meteor.isClient) {
   
   Meteor.Router.add({
