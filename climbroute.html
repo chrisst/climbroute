@@ -25,6 +25,7 @@
           <ul class="nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#users">Users</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -53,8 +54,6 @@
   </div> 
   
   <br/><br/>
-  Stuff:
-  {{> stuff}}
 </body>
 
 
@@ -69,20 +68,6 @@
 
 <template name="hello">
   <h1>Welcome to ClimbRoute!</h1>
-</template>
-
-<template name="stuff">
-    <ul>
-        {{#each routes}}
-           {{> route_info}}
-        {{else}}
-            nothing here
-        {{/each}}
-    </ul>
-</template>
-
-<template name="route_info">
-    <li>{{name}}</li>
 </template>
 
 

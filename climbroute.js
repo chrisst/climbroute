@@ -39,10 +39,6 @@ if (Meteor.isClient) {
   Template.hello.greeting = function() {
     return "Welcome to climbroute.";
   };
-
-  Template.stuff.routes = function() {
-    return Routes.find({});
-  };
   
   Template.Routes.Route = function() {
     return Routes.find({});
