@@ -1,8 +1,6 @@
 html, body { font-size: 14px; font-family: 'Roboto', sans-serif; }
 
 .brand { font-weight: bold; }
-.login { float: right; margin: 11px 0; }
-.login .login-link-text { color: #fff; }
 
 .hero h1 { margin: 30px 0; }
 

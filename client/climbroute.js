@@ -7,7 +7,8 @@ if (Meteor.isClient) {
     '/': 'home',
     '/about': 'about',
     '/users': 'users',
-    '/contact': 'contact'
+    '/contact': 'contact',
+    '/gyms': 'gyms'
   });
 
   
