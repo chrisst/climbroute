@@ -9,8 +9,8 @@ insecure
 preserve-inputs
 accounts-ui
 accounts-password
-bootstrap
 http
 email
 jquery
 router
+bootstrap-3
