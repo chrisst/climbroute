@@ -36,6 +36,12 @@ if (Meteor.isServer) {
 
 if (Meteor.isClient) {
   
+  Meteor.Router.add({
+    '/': 'home',
+    '/about-us': 'about'
+  });
+
+  
   Template.hello.greeting = function() {
     return "Welcome to climbroute.";
   };
@@ -75,6 +81,12 @@ if (Meteor.isClient) {
   Accounts.ui.config({
     passwordSignupFields: 'USERNAME_ONLY'
   });
+  
+  Template.pager.current = function() {
+    return Meteor.Router.page();  
+  };
+  
+  
   
 }
 
