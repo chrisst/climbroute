@@ -1,22 +1,17 @@
 <template name="home">
-  <div class="container hero">
-    <div class="row">
-      <div class="span12 text-center ">{{> hello}}</div>
-    </div>
-  
-  <div class="container">
-      <div class="row">
-          <h2>Gyms:</h2>
-          {{> Gyms}}
-      </div>
+  <div class="row">
+    <div class="span12 text-center ">{{> hello}}</div>
   </div>
   
-  <div class="container">
-    <div class="row">
-      <h2>Routes:</h2>
-      {{> Routes}}
-    </div>
-  </div> 
+  <div class="row">
+      <h2>Gyms:</h2>
+      {{> Gyms}}
+  </div>
+  
+  <div class="row">
+    <h2>Routes:</h2>
+    {{> Routes}}
+  </div>
   
   <br/><br/>
   </div>
@@ -27,11 +22,11 @@
 
 
 <template name="Gyms">
-    <ul>
-        {{#each Gym}}
-        <li>{{name}}</li>
-        {{/each}}
-    </ul>
+  <ul>
+      {{#each Gym}}
+      <li>{{name}}</li>
+      {{/each}}
+  </ul>
 </template>
 
 
@@ -41,7 +36,7 @@
 
 
 <template name="Routes">
-  <table>
+  <table class="table table-striped">
     <tr>
       <th>Name</th>
       <th>Rating</th>
