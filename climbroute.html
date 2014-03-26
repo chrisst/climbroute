@@ -1,31 +1,74 @@
 <head>
   <title>climbroute</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700,100' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-    <div style="float: right">
-    {{loginButtons align="right"}}
+
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="#">ClimbRoute</a>
+        
+        <div class="login">{{loginButtons align="right"}}</div>
+        
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+        
+      </div>
     </div>
-  {{> hello}}
+  </div>
   
+  <div class="container hero">
+    <div class="row">
+      <div class="span12 text-center ">{{> hello}}</div>
+    </div>
   
-  <hr>
-  <h2>Routes:</h2>
-  {{> Routes}}
+  <div class="container">
+      <div class="row">
+          <h2>Gyms:</h2>
+          {{> Gyms}}
+      </div>
+  </div>
   
-  <hr>
+  <div class="container">
+    <div class="row">
+      <h2>Routes:</h2>
+      {{> Routes}}
+    </div>
+  </div> 
+  
+  <br/><br/>
   Stuff:
   {{> stuff}}
 </body>
 
 
-
+<template name="Gyms">
+    <ul>
+        {{#each Gym}}
+        <li>{{name}}</li>
+        {{/each}}
+    </ul>
+</template>
 
 
 <template name="hello">
-  <h1>Our Sweet Climbing Route App!</h1>
-  <h3>Stuff will happen here.</h3>
-  {{greeting}}
+  <h1>Welcome to ClimbRoute!</h1>
 </template>
 
 <template name="stuff">
@@ -49,10 +92,11 @@
       <th>Name</th>
       <th>Rating</th>
       <th>Setter</th>
+      <th></th>
     </tr>
     {{#each Route}}
     <tr>
-      <td>{{name}}</td>
+      <td data-toggle="collapse" target>{{name}}</td>
       <td>{{rating}}</td>
       <td>{{setter}}</td>
       <td><a href="" class="remove">remove</a></td>

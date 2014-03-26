@@ -1,3 +1,4 @@
+Gyms = new Meteor.Collection('gyms');
 Routes = new Meteor.Collection('routes');
 
 
@@ -16,6 +17,15 @@ if (Meteor.isServer) {
       routes.forEach(function(route) {
         Routes.insert(route);
       });
+    }
+    
+    if (Gyms.find().fetch().length == 0) {
+        Gyms.remove({});
+        var gyms = {};
+        gyms = JSON.parse(Assets.getText('gyms.json'));
+        gyms.forEach(function(gym) {
+           Gyms.insert(gym); 
+        });
     }
 	
   });
@@ -36,6 +46,10 @@ if (Meteor.isClient) {
   
   Template.Routes.Route = function() {
     return Routes.find({});
+  }
+  
+  Template.Gyms.Gym = function() {
+    return Gyms.find({});
   }
   
   Template.Routes.events = {

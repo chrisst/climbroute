@@ -11,3 +11,6 @@ accounts-ui
 accounts-password
 bootstrap
 http
+email
+jquery
+router

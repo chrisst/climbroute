@@ -1,0 +1,24 @@
+[
+    {
+        "name" : "The Mine",
+        "address" : {
+            "street" : "123 Main St",
+            "city" : "Park City",
+            "state" : "UT",
+            "zipcode" : "84098"
+        },
+        "email" : "mine@test.com",
+        "routes" : []
+    },
+    {
+        "name" : "Momemtum",
+        "address" : {
+            "street" : "123 Main St",
+            "city" : "Salt Lake City",
+            "state" : "UT",
+            "zipcode" : "84121"
+        },
+        "email" : "momentum@test.com",
+        "routes" : []
+    }
+]
