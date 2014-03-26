@@ -1,0 +1,40 @@
+<template name="gym">
+  <div class="row">
+    <div class="col-md-12">
+    {{#with thisGym}}
+      <h1>{{name}}</h1>
+      <a href="mailto:{{thisGym.email}}">{{email}}</a>
+      
+      <p>
+        <address>
+          {{address.street}}<br/>
+          {{address.city}}, {{address.state}} {{address.zipcode}}<br/>
+        </address>
+      </p>
+      
+      <h2>Routes:</h2>
+      
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <tr>
+            <th>Name</th>
+            <th>Rating</th>
+            <th>Setter</th>
+          </tr>
+          {{#each routes}}
+            {{#with thisRoute this}}
+            <tr>
+              <td><a href="/route/{{_id}}">{{name}}</a></td>
+              <td>{{rating}}</td>
+              <td>{{setter}}</td>
+            </tr>
+            {{/with}}
+            {{else}}
+            <tr><td>This gym doesn't have any routes yet.</td></tr>
+          {{/each}}
+        </table>
+      </div>
+    {{/with}}
+    </div>
+  </div>
+</template>

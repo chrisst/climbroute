@@ -1,0 +1,15 @@
+<template name="route">
+  <div class="row">
+    <div class="col-md-12">
+      {{#with thisRoute}}
+      <h1>{{name}} <small>by {{setter}}</h1>
+      <h2>Rated at: {{rating}}</h2>
+      {{/with}}
+      
+      <br/>
+      {{#with lastGym}}
+      <a href="/gym/{{_id}}">< back to {{name}} gym</a>
+      {{/with}}
+    </div>
+  </div>
+</template>
