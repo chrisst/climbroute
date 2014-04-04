@@ -1,13 +1,14 @@
 <template name="gyms">
-  <div class="row">
+  <div class="row gyms">
     <div class="col-md-12">
-      <h1>Gyms</h1>
+      <h1 class="text-center">Gyms</h1>
       
-      <ul>
+      <br/>
+      
       {{#each allGyms}}
-        <li><a href="/gym/{{_id}}">{{name}}</a></li>
+        <a href="/gym/{{_id}}" class="btn btn-primary btn-block btn-lg">{{name}}</a>
       {{/each}}
-      </ul>
+      
     </div>
   </div>
 </template>

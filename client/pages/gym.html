@@ -1,7 +1,9 @@
 <template name="gym">
   <div class="row">
     <div class="col-md-12">
+    
     {{#with thisGym}}
+    <div class="text-center">
       <h1>{{name}}</h1>
       <a href="mailto:{{thisGym.email}}">{{email}}</a>
       
@@ -11,8 +13,11 @@
           {{address.city}}, {{address.state}} {{address.zipcode}}<br/>
         </address>
       </p>
+    </div>
       
-      <h2>Routes:</h2>
+      <br/>
+      
+      <h3 class="text-center">Routes</h3>
       
       <div class="table-responsive">
         <table class="table table-striped">
@@ -20,6 +25,9 @@
             <th>Name</th>
             <th>Rating</th>
             <th>Setter</th>
+            {{#if currentUser}}
+            <th>Admin</th>
+            {{/if}}
           </tr>
           {{#each routes}}
             {{#with thisRoute this}}
@@ -27,6 +35,9 @@
               <td><a href="/route/{{_id}}">{{name}}</a></td>
               <td>{{rating}}</td>
               <td>{{setter}}</td>
+              {{#if currentUser}}
+              <td><button class="btn btn-link btn-sm edit-route" data-route-id="{{_id}}">Edit</button><button class="btn btn-link btn-sm remove-route" data-route-id="{{_id}}">Remove</button></td>
+              {{/if}}
             </tr>
             {{/with}}
             {{else}}
@@ -34,7 +45,92 @@
           {{/each}}
         </table>
       </div>
+    
+      {{#if currentUser}}
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editModal">New Route</button>
+      {{/if}}
+    
     {{/with}}
+    
+    
     </div>
   </div>
+  
+  <div class="modal fade" id="editModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">New Route</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="inputRouteName" class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputRouteName" placeholder="Name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputSetter" class="col-sm-2 control-label">Setter</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputSetter" placeholder="Setter">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="inputRating" class="col-sm-2 control-label">Rating</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputRating" placeholder="Rating">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-new-route">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  
+  
+  <div class="modal fade" id="editModal2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Edit Route</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="inputRouteName" class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputRouteName" placeholder="Name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputSetter" class="col-sm-2 control-label">Setter</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputSetter" placeholder="Setter">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="inputRating" class="col-sm-2 control-label">Rating</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputRating" placeholder="Rating">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-new-route">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  
 </template>

@@ -8,7 +8,7 @@
 
 <body>
   
-  <nav class="navbar navbar-default" role="navigation">
+  <nav class="navbar navbar-default navbar-inverse" role="navigation">
     <div class="container" style="position:relative">
     
       <div class="navbar-header">
@@ -20,8 +20,6 @@
         </button>
         <a class="navbar-brand" href="/">ClimbRoute</a>
       </div>
-      
-      <div class="login">{{loginButtons}}</div>
   
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
@@ -35,6 +33,8 @@
       
     </div><!-- /.container-fluid -->
   </nav>
+  
+  <div class="container" style="position: relative;"><div class="login">{{loginButtons align="right"}}</div></div>
   
   <div class="container">{{renderPage}}</div>
   

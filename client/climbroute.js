@@ -47,6 +47,18 @@ if (Meteor.isClient) {
     return Gyms.findOne({'_id': Session.get('gymId').replace(/"/g,'')});
   }
   
+  Template.route.events = {
+    'click #save-route': function() {
+      var name   = $('#inputRouteName').val();
+      var rating = $('#inputRating').val();
+      var setter = $('#inputSetter').val();
+      
+      if (name.length > 0 && rating.length > 0 && setter.length > 0 ) {
+        Routes.update({'_id':Session.get('routeId').replace(/"/g,'')}, {$set: {"name":name,"rating":rating,"setter":setter}});
+      }
+    }
+  }
+  
   /*
   Template.route.events = {
     'click .add': function(e) {
@@ -84,8 +96,32 @@ if (Meteor.isClient) {
     return Routes.findOne({'_id':id});
   }
   
-  Template.gym.greeting = function() {
-    return 'gym greeting';
+  Template.gym.events = {
+    'click #save-new-route': function() {
+      var name   = $('#inputRouteName').val();
+      var rating = $('#inputRating').val();
+      var setter = $('#inputSetter').val();
+      
+      if (name.length > 0 && rating.length > 0 && setter.length > 0 ) {
+        var newRoute = Routes.insert({"name":name,"rating":rating,"setter":setter});
+        Gyms.update({'_id': Session.get('gymId').replace(/"/g,'')}, {$push: {'routes':newRoute}});
+        //$('#editModal input').val('');
+      }
+    },
+    'click .remove-route': function() {
+      var routeId = this._id;
+      var gym = Gyms.findOne({'routes':routeId});
+      var gymRoutes = gym.routes;
+      var gymId = gym._id;
+      console.log(gymRoutes);
+      $.each(gymRoutes, function(i,route) {
+        console.log(route);
+        if (!!route.match(routeId)) gymRoutes.splice(i,i);
+      });
+      Gyms.update({'_id':gymId}, {$set: {'routes':gymRoutes}});
+      console.log(Gyms.findOne({'routes':routeId}).routes);
+      //Routes.remove({'_id':this._id});
+    }
   }
 
 }
