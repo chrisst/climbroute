@@ -37,7 +37,6 @@ if (Meteor.isClient) {
   });
   
   
-  
   // ROUTES
   Template.route.thisRoute = function() {
     return Routes.findOne({'_id': Session.get('routeId').replace(/"/g,'')});
